@@ -1,8 +1,5 @@
 #!/bin/sh
 unamestr=`uname`
-if [[ "$unamestr" == 'Darwin' ]]; then
-  alias dosbox='/Applications/DOSBox.app/Contents/MacOS/DOSBox'
-fi
 
 if [ -z "$1" ]; then
   echo 'Usage: join.sh GAME'
