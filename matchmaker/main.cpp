@@ -33,10 +33,8 @@ int main() {
         }
 
         const auto iter = game_id_to_ip.find(game_id);
-        if (iter == game_id_to_ip.end()) {
-          return std::string("Invalid game id");
-        }
-        return game_id_to_ip[game_id];
+        return iter == game_id_to_ip.end() ? std::string("Invalid game id")
+                                           : iter->second;
       });
 
   app.port(8080).run();
