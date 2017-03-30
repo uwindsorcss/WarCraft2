@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 # TODO change this to the match maker url
-matchmaker="10.243.59.165:8080"
+matchmaker="137.207.64.83:8080"
 ip=$(curl "$matchmaker/join?g=$1")
 
 ping -c 1 "$ip" &> /dev/null
@@ -16,8 +16,12 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-tmpfile=$(mktemp /tmp/dosbox-wc2.XXXXXX)
-cp ./dosbox-wc2-join.conf $tmpfile
+tmpfile=$(mktemp ~/dosbox-wc2.XXXXXX)
+cp dosjoin.conf $tmpfile
 sed -ie "s/%PORT%/1337/g" $tmpfile
 sed -ie "s/%ADDRESS%/$ip/g" $tmpfile
-dosbox -conf $tmpfile
+if [ "$unamestr" == "Darwin" ] || [ "$unamestr" == "Linux" ]; then
+	dosbox -conf $tmpfile
+else
+	/usr/bin/ltsp-localapps /usr/bin/dosbox -conf $tmpfile
+fi
