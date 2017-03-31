@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 # TODO change this to the match maker url
-matchmaker="0.0.0.0:8080"
+matchmaker="137.207.64.83:8080"
 ip=$(curl "$matchmaker/join?g=$1")
 
 ping -c 1 "$ip" &> /dev/null

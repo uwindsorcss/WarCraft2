@@ -5,7 +5,7 @@ if [ -z "$LTSP_CLIENT" ]; then
 else
 	ip=$LTSP_CLIENT
 fi
-matchmaker="0.0.0.0:8080"
+matchmaker="137.207.64.83:8080"
 curl "$matchmaker/host?ip=$ip&g=$1"
 
 tmpfile=$(mktemp ~/dosbox-wc2.XXXXXX)
