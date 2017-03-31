@@ -20,7 +20,7 @@ tmpfile=$(mktemp ~/dosbox-wc2.XXXXXX)
 cp dosjoin.conf $tmpfile
 sed -ie "s/%PORT%/1337/g" $tmpfile
 sed -ie "s/%ADDRESS%/$ip/g" $tmpfile
-if [ "$unamestr"=="Darwin" ]: then
+if [ "$unamestr" == "Darwin" ]; then
 	dosbox -conf $tmpfile
 else
 	/usr/bin/ltsp-localapps /usr/bin/dosbox -conf $tmpfile
